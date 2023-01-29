@@ -1,0 +1,23 @@
+syntax = "v1"
+import (
+	"answer_type.api"
+)
+@server(
+	jwt: Auth
+	group: activity
+)
+service answer-api {
+	@handler ActivityStart //活动开始
+	post /activity/start(StartAnswerRequest) returns (StartAnswerResponse)
+	@handler Rewards //获取奖励
+	post /activity/rewards(RewardRequest) returns (Response)
+	@handler FragmentRewards //领取碎片奖励
+	post /activity/fragmentRewards() returns (Response)
+	@handler Answer //回答问题
+	post /activity/answer(AnswerRequest) returns (AnswerReponse)
+	@handler AnswerList //问题列表
+	post /answer/list() returns (AnswerListResponse)
+	@handler Logout //登出
+	post /logout() returns (Response)
+	
+}

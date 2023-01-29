@@ -1,0 +1,18 @@
+syntax = "v1"
+import (
+	"answer_type.api"
+)
+
+@server(
+	group: login
+)
+service answer-api {
+	@handler SendCode
+	post /sendcode(SendCodeRequest) returns (SendCodeResponse)
+	@handler Login
+	post /login(LoginRequest) returns (LoginResponse)
+	@handler PageLog
+	post /pageLog(PageRequest) returns (Response)
+	@handler QueryTarget
+	post /queryTarget(QueryTargetRequest) returns (Response)
+}
